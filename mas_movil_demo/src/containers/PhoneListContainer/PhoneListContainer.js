@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 
-class phoneDetailComponent extends Component {
-
+class PhoneListContainer extends Component {
     render() {
+        console.log('PhoneListcontainer', this.props);
         const phones = this.props.phones;
-        console.log('PhoneListcontainer', phones);
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        {phones.map((phone, index) => {
+                        {/* {phones.map((phone, index) => {
                             return (
                                 <div className='thumbnail' key={index}>
                                     <div className="row">
@@ -28,7 +27,7 @@ class phoneDetailComponent extends Component {
                                 </div>
                             )
                         }
-                        )}
+                        )} */}
                         it works!
                     </div>
                 </div>
@@ -39,4 +38,4 @@ class phoneDetailComponent extends Component {
 
 
 
-export default phoneDetailComponent;
+export default PhoneListContainer;

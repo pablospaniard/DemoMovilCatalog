@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class phoneDetailComponent extends Component {
+class PhoneDetailComponent extends Component {
 
     renderPhone(phone, index) {
         return (
@@ -40,4 +40,4 @@ class phoneDetailComponent extends Component {
     }
 }
 
-export default phoneDetailComponent;
+export default PhoneDetailComponent;
