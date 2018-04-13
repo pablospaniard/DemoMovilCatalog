@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, Switch } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import styles from './Layout.scss';
-import PhoneListContainer from '../PhoneListContainer/PhoneListContainer';
 import * as actionTypes from '../../store/actions';
-import fetchPhones from '../../api/index';
 
 
 class Layout extends Component {
 
 	state = {
-		disabled: true
+		disabled: false,
+		fetchedPhones: []
 	}
 
-	isButtonDisabled = () => {
-		this.props.onRenderPhones();
-		this.setState({
-			disabled: false
-		})
+	componentDidMount() {
+		axios.get('//www.mocky.io/v2/5918bc6b120000701040dbec')
+			.then(response => {
+				this.setState({
+					fetchedPhones: response.data.phones
+				})
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
+
+	// isButtonFetchClicked = () => {
+	// 	this.setState({
+	// 		disabled: false,
+	// 	})
+	// }
 
 	render() {
+		console.log('this.state.fetchedPhones', this.state.fetchedPhones);
 		console.log('this.props.phones', this.props.phones)
 		return (
 			<div className={`${styles.App} container`}>
@@ -34,12 +45,13 @@ class Layout extends Component {
 
 					</div>
 					<div className="col-md-12 text-center">
-						<button
+						{/* <button
 							className="btn btn-warning"
-							onClick={this.isButtonDisabled} >
+							onClick={this.isButtonFetchClicked} >
 							Receive Phones
-            			</button>
+            			</button> */}
 						<Link
+							onClick={() => this.props.onRenderPhones(this.state.fetchedPhones)}
 							to='/phones'
 							className="btn btn-primary"
 							style={this.state.disabled ? { pointerEvents: 'none', cursor: 'not-allowed', opacity: '0.2' } : { pointerEvents: 'all', cursor: 'pointer', opacity: '1' }}>Go to catalog
@@ -52,15 +64,14 @@ class Layout extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log('StateToProps', state)
 	return { phones: state }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onRenderPhones: () => dispatch({
+		onRenderPhones: (phones) => dispatch({
 			type: actionTypes.ADD_PHONES,
-			payload: fetchPhones()
+			payload: phones
 		})
 	}
 }

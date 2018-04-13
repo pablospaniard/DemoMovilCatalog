@@ -1,15 +1,16 @@
 import * as ActionTypes from './actions';
-import phones from '../api/phones';
+import phones from '../mock/phones';
 
-const initialState = phones;
-console.log('initialState', initialState)
+const initialState = {
+    phones
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_PHONES:
             return {
                 ...state,
-                state: action.payload
+                phones: action.payload
             };
         default:
             return state;

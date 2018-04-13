@@ -44,21 +44,21 @@ export default [
         battery: "1480 mAh",
         memory: "16GB, 32GB and RAM 1 GB"
     },
-    {
-        id: "4",
-        categoryId: "5",
-        name: "Nokia Lumia 1520",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
-        price: 674,
-        image: "/uploads/Lumia1520-Front-Back-png.png",
-        cpu: "1.3GHz Apple A6",
-        camera: "8mp (3264x2448)",
-        size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
-        weight: "132 grams (4.7 ounces) with battery",
-        display: "4.0 326 pixel density",
-        battery: "1480 mAh",
-        memory: "16GB, 32GB and RAM 1 GB"
-    },
+    // {
+    //     id: "4",
+    //     categoryId: "5",
+    //     name: "Nokia Lumia 1520",
+    //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
+    //     price: 674,
+    //     image: "/uploads/Lumia1520-Front-Back-png.png",
+    //     cpu: "1.3GHz Apple A6",
+    //     camera: "8mp (3264x2448)",
+    //     size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    //     weight: "132 grams (4.7 ounces) with battery",
+    //     display: "4.0 326 pixel density",
+    //     battery: "1480 mAh",
+    //     memory: "16GB, 32GB and RAM 1 GB"
+    // },
     // {
     //     id: "5",
     //     categoryId: "3",

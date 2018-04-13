@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class PhoneListContainer extends Component {
     render() {
@@ -36,6 +37,10 @@ class PhoneListContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    console.log('StateToProps', state)
+    return { phones: state.phones }
+}
 
 
-export default PhoneListContainer;
+export default connect(mapStateToProps)(PhoneListContainer);
