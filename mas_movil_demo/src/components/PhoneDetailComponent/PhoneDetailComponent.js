@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class PhoneDetailComponent extends Component {
 
+    camera
+    size
+    weight
+    display
+    battery
+    memory
+
     renderPhone(phone, index) {
         return (
-            <div className="col-sm-4 book-list" key={index}>
-                <div className="thumbnail">
-                    <img src={phone.image} alt={phone.name} className="img-thumbnail" />
-                    <div className="caption">
-                        <h4 className="pull-right">
-                            $ {phone.price}
-                        </h4>
-                        <h4>
-                            <Link to={`/phones/${phone.id}`}>
-                                {phone.name}
-                            </Link>
-                        </h4>
-                        <p>Description</p>
-                        <p className="itemButton">
-                            <Link to={`/phones/${phone.id}`} className="btn btn-default">
-                                More info
-                            </Link>
-                        </p>
+            <div>
+                <div className="jumbotron justify-content-center d-flex" key={index}>
+                    <Link to='/phones' className="btn btn-succes d-flex justify-content-center">Back to catalog</Link>
+                    <div className="col-sm-6">
+                        <div className="img-thumbnail row">
+                            <img src={phone.image} alt={phone.name} className="img-thumbnail col-md-6" />
+                            <div className="col-md-6">
+                                <ul>
+                                    <li>CPU:{phone.cpu}</li>
+                                    <li>CAMERA:{phone.camera}</li>
+                                    <li>SIZE:{phone.size}</li>
+                                    <li>WEIGHT:{phone.weight}</li>
+                                    <li>DISPLAY:{phone.display}</li>
+                                    <li>BATTERY:{phone.battery}</li>
+                                    <li>MEMORY:{phone.memory}</li>
+                                </ul>
+                            </div>
+                            <div className="caption col-md-12">
+                                <h4 className="justify-content-end d-flex">
+                                    $ {phone.price}
+                                </h4>
+                                <h4>
+                                    {phone.name}
+                                </h4>
+                            </div>
+                            <div>
+                                <p className="text-center">{phone.description}</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -32,12 +52,25 @@ class PhoneDetailComponent extends Component {
     render() {
         return (
             <div>
-                <div className="books row">
-                    {this.props.phones.map((phone, index) => this.renderPhone(phone, index))}
+                <div className="row">
+                    {this.props.phones.map((phone, index) => {
+                        let x = this.props.match.url.split('').pop()
+                        console.log(x, index)
+                        return index === Number(x) ?
+                            this.renderPhone(phone, index) : ''
+                    }
+                    )
+                    }
                 </div>
             </div>
         )
     }
 }
 
-export default PhoneDetailComponent;
+const mapStateToProps = state => {
+    console.log('StateToProps', state)
+    return { phones: state.phones }
+}
+
+
+export default connect(mapStateToProps)(PhoneDetailComponent);

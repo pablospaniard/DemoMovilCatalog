@@ -5,32 +5,32 @@ import axios from 'axios';
 
 import styles from './Layout.scss';
 import * as actionTypes from '../../store/actions';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 
 class Layout extends Component {
 
 	state = {
 		disabled: false,
-		fetchedPhones: []
+		fetchedPhones: [],
+		loading: false
 	}
 
 	componentDidMount() {
+		this.setState({
+			loading: true
+		})
 		axios.get('//www.mocky.io/v2/5918bc6b120000701040dbec')
 			.then(response => {
 				this.setState({
-					fetchedPhones: response.data.phones
+					fetchedPhones: response.data.phones,
+					loading: false
 				})
 			})
 			.catch(error => {
 				console.log(error);
 			});
 	}
-
-	// isButtonFetchClicked = () => {
-	// 	this.setState({
-	// 		disabled: false,
-	// 	})
-	// }
 
 	render() {
 		console.log('this.state.fetchedPhones', this.state.fetchedPhones);
@@ -45,11 +45,6 @@ class Layout extends Component {
 
 					</div>
 					<div className="col-md-12 text-center">
-						{/* <button
-							className="btn btn-warning"
-							onClick={this.isButtonFetchClicked} >
-							Receive Phones
-            			</button> */}
 						<Link
 							onClick={() => this.props.onRenderPhones(this.state.fetchedPhones)}
 							to='/phones'
@@ -57,6 +52,7 @@ class Layout extends Component {
 							style={this.state.disabled ? { pointerEvents: 'none', cursor: 'not-allowed', opacity: '0.2' } : { pointerEvents: 'all', cursor: 'pointer', opacity: '1' }}>Go to catalog
 						</Link>
 					</div>
+					{this.state.loading ? <Spinner /> : null}
 				</div>
 			</div>
 		);
