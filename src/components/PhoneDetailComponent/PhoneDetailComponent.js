@@ -15,11 +15,13 @@ class PhoneDetailComponent extends Component {
         return (
             <div>
                 <div className="jumbotron justify-content-center d-flex" key={index}>
-                    <Link to='/phones' className="btn btn-succes d-flex justify-content-center">Back to catalog</Link>
-                    <div className="col-sm-6">
+                    <div className="col-md-6">
+                        <Link to='/phones' className="btn btn-succes d-flex justify-content-center">Back to catalog</Link>
                         <div className="img-thumbnail row">
-                            <img src={phone.image} alt={phone.name} className="img-thumbnail col-md-6" />
-                            <div className="col-md-6">
+                            <div className="col-md-4">
+                                <img src={phone.image} alt={phone.name} className="img-thumbnail" />
+                            </div>
+                            <div className="col-md-8">
                                 <ul>
                                     <li>CPU:{phone.cpu}</li>
                                     <li>CAMERA:{phone.camera}</li>
