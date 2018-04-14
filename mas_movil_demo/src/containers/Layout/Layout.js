@@ -49,7 +49,7 @@ class Layout extends Component {
 							onClick={() => this.props.onRenderPhones(this.state.fetchedPhones)}
 							to='/phones'
 							className="btn btn-primary"
-							style={this.state.disabled ? { pointerEvents: 'none', cursor: 'not-allowed', opacity: '0.2' } : { pointerEvents: 'all', cursor: 'pointer', opacity: '1' }}>Go to catalog
+							style={this.state.loading ? { pointerEvents: 'none', cursor: 'not-allowed', opacity: '0.2' } : { pointerEvents: 'all', cursor: 'pointer', opacity: '1' }}>Go to catalog
 						</Link>
 					</div>
 					{this.state.loading ? <Spinner /> : null}
